@@ -13,7 +13,7 @@ pipeline {
 
         stage("Checkout from SCM") {
                steps {
-                   git branch: 'main', credentialsId: 'dshri12/github', url: 'https://github.com/dshri12/Register-app-gitops-reoo.git'
+                   git branch: 'main', credentialsId: 'Github', url: 'https://github.com/dshri12/Register-app-gitops-reoo.git'
                }
         }
 
@@ -35,7 +35,7 @@ pipeline {
                    git add deployment.yaml
                    git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'dshri12/github', gitToolName: 'Default')]) {
+                withCredentials([gitUsernamePassword(credentialsId: 'Github', gitToolName: 'Default')]) {
                   sh "git push https://github.com/dshri12/Register-app-gitops-reoo main"
                 }
             }
